@@ -5,7 +5,7 @@ export default function Page() {
   return (
     <div className="flex flex-wrap items-center gap-2 md:flex-row">
       <Button>Button</Button>
-      <Button variant='success' capitalize >capitalize with attribute</Button>
+      <Button variant='default'capitalize >default capitalize</Button>
       <Button variant='destructive' >destructive</Button>
       <Button variant='ghost' >ghost</Button>
       <Button variant='link' >link</Button>
