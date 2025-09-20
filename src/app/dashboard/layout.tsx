@@ -2,12 +2,14 @@
 // https://tailwindcomponents.com/component/tailwind-css-admin-dashboard-layout
 // https://gist.github.com/Klerith/3949f1c8b884d7101e378dfb668f0f3a
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
 
 const links = [
   { name: "accordion", href: "/dashboard/accordion" },
   { name: "alert dialog", href: "/dashboard/alert-dialog" },
   { name: "alert", href: "/dashboard/alert" },
+  { name: "avatar", href: "/dashboard/avatar" },
   { name: "badge", href: "/dashboard/badge" },
   { name: "button", href: "/dashboard/button" },
   { name: "calendar", href: "/dashboard/calendar" },
@@ -100,8 +102,14 @@ export default function DashboardLayout({
             </div>
             <div className="flex items-center">
               {/* User Avatar */}
-              <div className="bg-blue-500 text-white p-2 rounded-full w-12 h-12 flex items-center justify-center">
-                FH
+              <div className="bg-blue-500 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-md">
+                <Avatar className="w-12 h-12">
+                  <AvatarImage
+                    src="https://github.com/shadcn.png"
+                    alt="@shadcn"
+                  />
+                  <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
               </div>
             </div>
           </div>
