@@ -10,6 +10,7 @@ const links = [
   { name: "alert", href: "/dashboard/alert" },
   { name: "badge", href: "/dashboard/badge" },
   { name: "button", href: "/dashboard/button" },
+  { name: "calendar", href: "/dashboard/calendar" },
   { name: "dialog", href: "/dashboard/dialog" },
 ];
 
@@ -137,7 +138,7 @@ export default function DashboardLayout({
         ></div>
         <div
           id="main-content"
-          className="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64"
+          className="h-full w-full bg-gray-200 relative overflow-y-auto lg:ml-64 mt-15"
         >
           <main>
             <div className="pt-6 px-4">
