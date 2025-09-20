@@ -21,7 +21,7 @@ const items = [
   }
 ];
 
-export default function Home() {
+export default function Page() {
   return (
     <Accordion
       type="single"

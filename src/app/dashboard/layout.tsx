@@ -5,10 +5,11 @@
 import Link from "next/link";
 
 const links = [
-  { name: "accordion", href: "accordion" },
-  { name: "alert", href: "alert" },
-  { name: "button", href: "button" },
-  { name: "alert dialog", href: "alert-dialog" },
+  { name: "accordion", href: "/dashboard/accordion" },
+  { name: "alert", href: "/dashboard/alert" },
+  { name: "button", href: "/dashboard/button" },
+  { name: "alert dialog", href: "/dashboard/alert-dialog" },
+  { name: "dialog", href: "/dashboard/dialog" },
 ];
 
 export default function DashboardLayout({
@@ -115,7 +116,7 @@ export default function DashboardLayout({
               <div className="flex-1 px-3 bg-white divide-y space-y-1">
                 <ul className="space-y-2 pb-2">
                   {links.map((link) => (
-                    <li key={link.href}>
+                    <li key={link.name}>
                       <Link
                         href={link.href}
                         className="text-base capitalize text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group"

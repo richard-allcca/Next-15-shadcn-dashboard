@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/alert-dialog"
 import { Button } from "@/components/ui/button"
 
-export default function Home() {
+export default function Page() {
   return (
     <AlertDialog onOpenChange={(open) => console.log({open})} >
 

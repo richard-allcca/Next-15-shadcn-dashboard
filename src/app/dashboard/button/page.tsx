@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ChevronRightIcon, GitBranch, Loader2Icon } from "lucide-react";
 
-export default function Home() {
+export default function Page() {
   return (
     <div className="flex flex-wrap items-center gap-2 md:flex-row">
       <Button>Button</Button>

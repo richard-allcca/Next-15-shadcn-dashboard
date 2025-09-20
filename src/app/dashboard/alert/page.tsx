@@ -1,7 +1,7 @@
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { CheckCircle2Icon, PopcornIcon, AlertCircleIcon } from "lucide-react";
 
-export default function Home() {
+export default function Page() {
   return (
     <div className="grid w-full max-w-xl items-start gap-4">
 
