@@ -13,6 +13,7 @@ const links = [
   { name: "badge", href: "/dashboard/badge" },
   { name: "button", href: "/dashboard/button" },
   { name: "calendar", href: "/dashboard/calendar" },
+  { name: "card", href: "/dashboard/card" },
   { name: "dialog", href: "/dashboard/dialog" },
 ];
 
