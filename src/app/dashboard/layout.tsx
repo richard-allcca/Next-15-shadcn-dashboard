@@ -14,6 +14,7 @@ const links = [
   { name: "button", href: "/dashboard/button" },
   { name: "calendar", href: "/dashboard/calendar" },
   { name: "card", href: "/dashboard/card" },
+  { name: "carousel", href: "/dashboard/carousel" },
   { name: "dialog", href: "/dashboard/dialog" },
 ];
 
