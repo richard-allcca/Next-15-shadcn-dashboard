@@ -18,6 +18,7 @@ const links = [
   { name: "checkbox", href: "/dashboard/checkbox" },
   { name: "combobox", href: "/dashboard/combobox" },
   { name: "command", href: "/dashboard/command" },
+  { name: "context-menu", href: "/dashboard/context-menu" },
   { name: "dialog", href: "/dashboard/dialog" },
 ];
 
