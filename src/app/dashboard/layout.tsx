@@ -24,6 +24,7 @@ const links = [
   { name: "menu-bar", href: "/dashboard/menu-bar" },
   { name: "progress", href: "/dashboard/progress" },
   { name: "sheet", href: "/dashboard/sheet" },
+  { name: "skeleton", href: "/dashboard/skeleton" },
 ];
 
 export default function DashboardLayout({
@@ -156,7 +157,7 @@ export default function DashboardLayout({
         ></div>
         <div
           id="main-content"
-          className="h-full w-full bg-gray-200 relative overflow-y-auto lg:ml-64 mt-15"
+          className="h-full w-full bg-gray-200 relative overflow-y-auto lg:ml-64"
         >
           <main>
             <div className="pt-6 px-4">
