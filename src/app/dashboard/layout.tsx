@@ -25,6 +25,7 @@ const links = [
   { name: "progress", href: "/dashboard/progress" },
   { name: "sheet", href: "/dashboard/sheet" },
   { name: "skeleton", href: "/dashboard/skeleton" },
+  { name: "slider", href: "/dashboard/slider" },
 ];
 
 export default function DashboardLayout({
