@@ -20,6 +20,7 @@ const links = [
   { name: "command", href: "/dashboard/command" },
   { name: "context-menu", href: "/dashboard/context-menu" },
   { name: "dialog", href: "/dashboard/dialog" },
+  { name: "input-opt", href: "/dashboard/input-opt" },
   { name: "menu-bar", href: "/dashboard/menu-bar" },
 ];
 
