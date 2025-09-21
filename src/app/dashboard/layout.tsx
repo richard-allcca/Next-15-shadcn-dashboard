@@ -20,6 +20,7 @@ const links = [
   { name: "command", href: "/dashboard/command" },
   { name: "context-menu", href: "/dashboard/context-menu" },
   { name: "dialog", href: "/dashboard/dialog" },
+  { name: "menu-bar", href: "/dashboard/menu-bar" },
 ];
 
 export default function DashboardLayout({
