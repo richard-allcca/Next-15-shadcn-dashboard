@@ -4,6 +4,7 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
+import { Toaster as SonnerToaster } from "sonner";
 
 const links = [
   { name: "accordion", href: "/dashboard/accordion" },
@@ -26,6 +27,7 @@ const links = [
   { name: "sheet", href: "/dashboard/sheet" },
   { name: "skeleton", href: "/dashboard/skeleton" },
   { name: "slider", href: "/dashboard/slider" },
+  { name: "sonner", href: "/dashboard/sonner" },
 ];
 
 export default function DashboardLayout({
@@ -169,6 +171,9 @@ export default function DashboardLayout({
               </div>
             </div>
           </main>
+
+          <SonnerToaster position="top-center" richColors />
+
           <footer className="bg-white md:flex md:items-center md:justify-between shadow rounded-lg p-4 md:p-6 xl:p-8 my-6 mx-4">
             <ul className="flex items-center flex-wrap mb-6 md:mb-0">
               <li>
