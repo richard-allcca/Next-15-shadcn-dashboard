@@ -12,7 +12,15 @@ import {
   getSortedRowModel,
   SortingState,
   useReactTable,
+  VisibilityState,
 } from "@tanstack/react-table";
+
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 import {
   Table,
@@ -35,6 +43,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Eye } from "lucide-react";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -48,6 +57,7 @@ export function DataTable<TData, TValue>({
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [currentStatus, setCurrentStatus] = useState('all');
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 
   const table = useReactTable({
     data,
@@ -58,26 +68,30 @@ export function DataTable<TData, TValue>({
     getFilteredRowModel: getFilteredRowModel(),
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
+    onColumnVisibilityChange: setColumnVisibility,
     state: {
       sorting,
       columnFilters,
+      columnVisibility,
     },
   });
 
   return (
     <div>
+
       {/* Filter */}
+
       <div className="flex items-center py-4 justify-between">
         <Input
+          className="max-w-sm w-1/4"
           placeholder="Filter emails..."
           value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
           onChange={(event) => {
             // NOTE - if you want to reset status filter when typing in the search box, uncomment below line
             // setCurrentStatus('all');
             // table.getColumn("status")?.setFilterValue(undefined);
-            table.getColumn("email")?.setFilterValue(event.target.value)
+            table.getColumn("email")?.setFilterValue(event.target.value);
           }}
-          className="max-w-sm"
         />
 
         <Select
@@ -110,10 +124,47 @@ export function DataTable<TData, TValue>({
             </SelectGroup>
           </SelectContent>
         </Select>
+
+        {/* Visibility columns */}
+
+        <div className="w-fit">
+          <DropdownMenu >
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" className="ml-auto">
+                <Eye/> Columns
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              {table
+                .getAllColumns()
+                .filter(
+                  (column) => column.getCanHide()
+                )
+                .filter(
+                  (column) => column.id !== "email" // Always show 'email' column
+                )
+                .map((column) => {
+                  return (
+                    <DropdownMenuCheckboxItem
+                      key={column.id}
+                      className="capitalize"
+                      checked={column.getIsVisible()}
+                      onCheckedChange={(value) =>
+                        column.toggleVisibility(!!value)
+                      }
+                    >
+                      {column.id}
+                    </DropdownMenuCheckboxItem>
+                  );
+                })}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
 
 
       {/* Table */}
+
       <div className="overflow-hidden rounded-md border">
         <Table>
           <TableHeader>
@@ -160,6 +211,7 @@ export function DataTable<TData, TValue>({
       </div>
 
       {/* Pagination */}
+
       <div className="flex items-center justify-end space-x-2 py-4">
         <Button
           variant="outline"
