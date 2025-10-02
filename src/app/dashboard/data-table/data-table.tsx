@@ -45,12 +45,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Eye } from "lucide-react";
 
-interface DataTableProps<TData, TValue> {
+interface DataTableProps<TData extends { id: string | number }, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
 }
 
-export function DataTable<TData, TValue>({
+export function DataTable<TData extends { id: string | number }, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
@@ -58,6 +58,7 @@ export function DataTable<TData, TValue>({
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [currentStatus, setCurrentStatus] = useState('all');
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
+  const [rowSelection, setRowSelection] = useState({});
 
   const table = useReactTable({
     data,
@@ -69,10 +70,12 @@ export function DataTable<TData, TValue>({
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
+    onRowSelectionChange: setRowSelection,
     state: {
       sorting,
       columnFilters,
       columnVisibility,
+      rowSelection,
     },
   });
 
@@ -125,13 +128,34 @@ export function DataTable<TData, TValue>({
           </SelectContent>
         </Select>
 
+        {/* Action with row selected */}
+        <Button
+          variant={"destructive"}
+          disabled={!table.getFilteredSelectedRowModel().rows.length}
+          onClick={() => {
+            // Get info of selected rows
+            // table.getSelectedRowModel().rows.forEach((row) => {
+            //   console.log(row.original);
+            // });
+            // Get list of selected rows
+              const ids = table.getSelectedRowModel().rows.map((row) => row.original.id);
+              console.log("You deleted: ", ids);
+              // You can do a fetch here to delete the selected items in the database
+              // Then refetch the data
+              // For now, we'll just deselect all rows
+              table.resetRowSelection();
+          }}
+        >
+          Delete {table.getFilteredSelectedRowModel().rows.length} rows
+        </Button>
+
         {/* Visibility columns */}
 
         <div className="w-fit">
           <DropdownMenu >
             <DropdownMenuTrigger asChild>
               <Button variant="outline" className="ml-auto">
-                <Eye/> Columns
+                <Eye /> Columns
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
@@ -210,9 +234,15 @@ export function DataTable<TData, TValue>({
         </Table>
       </div>
 
-      {/* Pagination */}
+      {/* Row selected and Pagination */}
 
       <div className="flex items-center justify-end space-x-2 py-4">
+
+        <div className="text-muted-foreground flex-1 text-sm">
+          {table.getFilteredSelectedRowModel().rows.length} of{" "}
+          {table.getFilteredRowModel().rows.length} row(s) selected.
+        </div>
+
         <Button
           variant="outline"
           size="sm"
