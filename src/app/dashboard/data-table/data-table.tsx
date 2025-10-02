@@ -23,6 +23,16 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -37,6 +47,7 @@ export function DataTable<TData, TValue>({
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+  const [currentStatus, setCurrentStatus] = useState('all');
 
   const table = useReactTable({
     data,
@@ -56,16 +67,51 @@ export function DataTable<TData, TValue>({
   return (
     <div>
       {/* Filter */}
-      <div className="flex items-center py-4">
+      <div className="flex items-center py-4 justify-between">
         <Input
           placeholder="Filter emails..."
           value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
+          onChange={(event) => {
+            // NOTE - if you want to reset status filter when typing in the search box, uncomment below line
+            // setCurrentStatus('all');
+            // table.getColumn("status")?.setFilterValue(undefined);
             table.getColumn("email")?.setFilterValue(event.target.value)
-          }
+          }}
           className="max-w-sm"
         />
+
+        <Select
+          value={currentStatus}
+          onValueChange={(value) => {
+
+            // NOTE - This filter reset works in combination with the reset mentioned in the input onChange above
+            // Uncomment both if you want to reset status filter when typing in the search box
+            // if (value === 'all') {
+            //   table.getColumn('status')?.setFilterValue(undefined);
+            //   setCurrentStatus('all');
+            //   return;
+            // }
+
+            setCurrentStatus(value);
+            table.getColumn("status")?.setFilterValue(value === 'all' ? undefined : value);
+          }}
+        >
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Show all" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Status</SelectLabel>
+              <SelectItem value="all">All</SelectItem>
+              <SelectItem value="success">Success</SelectItem>
+              <SelectItem value="pending">Pending</SelectItem>
+              <SelectItem value="failed">Failed</SelectItem>
+              <SelectItem value="processing">Processing</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
       </div>
+
 
       {/* Table */}
       <div className="overflow-hidden rounded-md border">
