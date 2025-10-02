@@ -18,7 +18,7 @@ import { toast } from "sonner";
 import { Checkbox } from "@/components/ui/checkbox";
 
 export const columns: ColumnDef<Payment>[] = [
-   {
+  {
     id: "select",
     header: ({ table }) => (
       <Checkbox
@@ -107,7 +107,7 @@ export const columns: ColumnDef<Payment>[] = [
   {
     accessorKey: "email",
     // header: "Email",
-        header: ({ column }) => {
+    header: ({ column }) => {
       return (
         <Button
           variant="ghost"
@@ -116,7 +116,7 @@ export const columns: ColumnDef<Payment>[] = [
           Email
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
-      )
+      );
     },
   },
   {
