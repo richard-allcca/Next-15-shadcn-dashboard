@@ -260,6 +260,30 @@ export function DataTable<TData extends { id: string | number }, TValue>({
           Next
         </Button>
       </div>
+
+      <Select
+        onValueChange={(value) => {
+          table.setPageSize(Number(value));
+        }}
+      >
+        <SelectTrigger className="w-[180px] m-2 " >
+          <SelectValue placeholder='10 rows'/>
+        </SelectTrigger>
+
+        <SelectContent>
+          <SelectGroup>
+            <SelectLabel>Rows per page</SelectLabel>
+            <SelectItem value="10" >10 rows</SelectItem>
+            <SelectItem value="20" >20 rows</SelectItem>
+            <SelectItem value="30" >30 rows</SelectItem>
+            <SelectItem value="40" >40 rows</SelectItem>
+            <SelectItem value="50" >50 rows</SelectItem>
+            <SelectItem value="100" >100 rows</SelectItem>
+          </SelectGroup>
+        </SelectContent>
+
+      </Select>
+
     </div>
   );
 }
