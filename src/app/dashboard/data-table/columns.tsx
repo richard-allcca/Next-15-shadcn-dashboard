@@ -1,7 +1,7 @@
 "use client";
 
 import { Payment } from "@/data/payment.data";
-import { ColumnDef } from "@tanstack/react-table";
+import { ColumnDef, FilterFn, Row } from "@tanstack/react-table";
 import { Badge } from '@/components/ui/badge';
 import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 
@@ -16,6 +16,22 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { toast } from "sonner";
 import { Checkbox } from "@/components/ui/checkbox";
+
+// const myCustomFilterFn: FilterFn<Payment> = (
+// 	row: Row<Payment>,
+// 	columnId: string,
+// 	filterValue: string,
+// 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// 	addMeta: (meta: any) => void
+// ) => {
+//   filterValue = filterValue.toLowerCase();
+
+//   const filterParts = filterValue.split(' ');
+
+//   const rowValues = `${row.original.email} ${row.original.clientName} ${row.original.status} `.toLowerCase();
+
+//   return filterParts.every(part => rowValues.includes(part));
+// };
 
 export const columns: ColumnDef<Payment>[] = [
   {
@@ -107,6 +123,7 @@ export const columns: ColumnDef<Payment>[] = [
   {
     accessorKey: "email",
     // header: "Email",
+    // filterFn: myCustomFilterFn, // DESC - Example of custom filter function usage
     header: ({ column }) => {
       return (
         <Button
