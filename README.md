@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js 15 Shadcn Dashboard
 
-## Getting Started
+Dashboard moderno construido con [Next.js 15](https://nextjs.org/), [shadcn/ui](https://ui.shadcn.com/), [Radix UI](https://www.radix-ui.com/), [TanStack Table](https://tanstack.com/table/), [Tailwind CSS](https://tailwindcss.com/), y otras librerías de última generación.
 
-First, run the development server:
+## Características principales
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Next.js 15** con app router y soporte SSR/SSG.
+- **Componentes UI reutilizables** (shadcn/ui, Radix UI).
+- **Tabla de datos avanzada** con filtrado, paginación, selección y acciones (TanStack Table).
+- **Tailwind CSS** para estilos rápidos y personalizables.
+- **Notificaciones** con Sonner.
+- **Formularios** con React Hook Form y validación con Zod.
+- **Dark mode** y soporte de temas.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Estructura del proyecto
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `src/app/` — Rutas y páginas principales del dashboard.
+- `src/components/ui/` — Componentes UI reutilizables (botón, badge, tabla, etc).
+- `src/data/` — Datos de ejemplo (mock) para la tabla de pagos.
+- `src/lib/` — Utilidades compartidas.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Instalación y uso
 
-## Learn More
+1. Instala dependencias:
 
-To learn more about Next.js, take a look at the following resources:
+ ```bash
+ npm install
+ # o
+ yarn install
+ # o
+ pnpm install
+ # o
+ bun install
+ ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Inicia el servidor de desarrollo:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+ ```bash
+ npm run dev
+ ```
 
-## Deploy on Vercel
+3. Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Personalización
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Modifica los componentes en `src/components/ui/` para adaptar el diseño.
+- Cambia los datos de ejemplo en `src/data/payment.data.ts`.
+- Agrega nuevas páginas o rutas en `src/app/dashboard/`.
+
+## Principales dependencias
+
+- `next`, `react`, `tailwindcss`, `@tanstack/react-table`, `@radix-ui/*`, `shadcn/ui`, `sonner`, `zod`, `react-hook-form`, `lucide-react`.
+
+## Recursos útiles
+
+- [Documentación Next.js](https://nextjs.org/docs)
+- [shadcn/ui](https://ui.shadcn.com/docs)
+- [TanStack Table](https://tanstack.com/table/latest/docs/guide/column-filtering#filterfns)
+- [Radix UI](https://www.radix-ui.com/docs/primitives/overview/introduction)
+- [Tailwind CSS](https://tailwindcss.com/docs)
+
+---
+
+Desarrollado por [richard-allcca](https://github.com/richard-allcca)
+[Shadcn UI](https://ui.shadcn.com/docs/installation)
